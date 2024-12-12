@@ -1,12 +1,9 @@
 import axios from 'axios';
-
+import {IDetailPayload} from "../interfaces/IPayloads.ts";
 class ApiService {
-  getMovies({ language, apiKey }: { language: string; apiKey: string }) {
-    const category = 'popular'; // possible values: top_rated | upcoming | now_playing;
-    const url = `https://api.themoviedb.org/3/movie/${category}?language=${language}&api_key=${apiKey}`;
+  getMovies({ language, apiKey, page, category }: IDetailPayload) {
+    const url = `https://api.themoviedb.org/3/movie/${category}?language=${language}&api_key=${apiKey}&page=${page}`;
 
-    // NOTICE: 
-    // 
     return axios.get(url);
   }
 }

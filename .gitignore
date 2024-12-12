@@ -1,0 +1,15 @@
+node_modules
+dist
+.env
+pnpm-lock.yaml
+package-lock.json
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/seagulchallenge.iml
+/.idea/vcs.xml
+/.idea/workspace.xml
+/.idea/modules.xml

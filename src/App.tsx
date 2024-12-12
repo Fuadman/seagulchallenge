@@ -1,9 +1,10 @@
 import './App.css';
 import Movies from './components/Movies.tsx';
+import MoviesHeader from "./components/MoviesHeader.tsx";
 function App() {
   return (
     <>
-      TOP MOVIES
+      <MoviesHeader />
       <Movies />
     </>
   );

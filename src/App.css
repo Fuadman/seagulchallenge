@@ -1,6 +1,131 @@
-#root {
-  max-width: 1280px;
-  /* margin: 0 auto; */
-  padding: 2rem;
-  /* text-align: center; */
+/* CSS for React Movie App 2017 - seanoneill.me */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Lucida Console, Helvetica, sans-serif;
+}
+
+body {
+  background-color: black;
+}
+.title {
+  font: normal 45px/60px 'fjallaone', Arial, sans-serif;
+  padding: 10px 0 0 100px;
+  color: white;
+}
+
+.movie-description {
+  font: normal 20px/20px 'fjallaone', Arial, sans-serif;
+  display: flex;
+  flex-direction: row;
+  text-transform: uppercase;
+  border-radius: 0 0 10px 10px;
+  /*background: black;*/
+  padding: 5px;
+  height: 50px;
+  font-size:1vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #808080FF;
+  .movie-title {
+    text-overflow: ellipsis;
+    flex: fit-content;
+    overflow: hidden;
+  }
+}
+.orange-background{
+  color: white;
+  background: #A16B09;
+}
+.red-background{
+  color: white;
+  background: #A10908;
+}
+.filters-container {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  color: white;
+}
+.category {
+  flex: fit-content;
+}
+
+* {
+  box-sizing: border-box;
+}
+.gallery {
+  border-radius: 10px;
+  transition: box-shadow 0.5s ease;
+}
+
+.gallery:hover {
+  -webkit-box-shadow: 0 0 10px #fff;
+  box-shadow: 0 0 10px #fff;
+}
+
+.gallery img {
+  border-radius: 10px 10px 0 0;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 3;
+}
+.responsive {
+  padding: 0 15px 20px 10px;
+  float: left;
+  width: 24.99999%;
+}
+.movies-container {
+  padding: 20px 100px;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 1000px) {
+  .responsive {
+    width: 19.99999%;
+    margin: 6px 0;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  .responsive {
+    width: 15.99999%;
+    margin: 6px 0;
+  }
+}
+
+.movie-detail{
+  .span{
+    font-weight: bold;
+  }
+  & img {
+    max-height: 500px;
+  }
+  .movie-overview {
+    max-width: 327px;
+    font-style: italic;
+    text-align: justify;
+    text-justify: inter-word;
+    & span {
+      font-weight: bold;
+    }
+  }
+  .movie-release-date {
+    & span {
+      font-weight: bold;
+    }
+  }
+  .movie-title span{
+    font-weight: bold;
+  }
 }
