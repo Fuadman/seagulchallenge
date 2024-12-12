@@ -1,10 +1,10 @@
-import apiService from '../services/api.service';
 import {useEffect, useState} from 'react';
 import MovieCard from "./MovieCard.tsx";
 import {IMovie} from "../interfaces/IMovie.ts";
+import {getMoviesV2} from "../services/MovieApi.tsx";
 
 export default function Movies() {
-    const [data, setData] = useState<IMovie[]>([]);
+    const [movies, setMovies] = useState<IMovie[]>([]);
     const [isLoading, setIsloading] = useState(false);
     const [rule, setRule] = useState('prime');
     const [page, setPage] = useState(1);
@@ -12,29 +12,26 @@ export default function Movies() {
     const [category, setCategory] = useState("popular");
     const totalPages = 500;
 
-    const fetchMovie = () => {
+    const fetchMovie = async () => {
         const apiKey = '1b501bbda107113acc653f328a2e935d';
-        setTimeout(() => {
-            apiService
-                .getMovies({
-                    language,
-                    apiKey,
-                    page,
-                    category
-                })
-                .then((data) => {
-                    setData((prevData:IMovie[]) => [...prevData, ...data.data.results]);
-                    setIsloading(false);
-                });
-        }, 0);
+        const res = await getMoviesV2({
+            language,
+            apiKey,
+            page,
+            category
+        })
+        if (res) {
+            setMovies((prevData:IMovie[]) => [...prevData, ...res.results]);
+            setIsloading(false);
+        }
     }
     useEffect(() => {
         fetchMovie();
     }, [page]);
     const resetData = ()=>{
-        if(data.length > 0){
+        if(movies.length > 0){
             setPage(1);
-            setData([]);
+            setMovies([]);
             fetchMovie();
         }
     }
@@ -65,6 +62,7 @@ export default function Movies() {
     window.addEventListener("scroll", debounce(handleScroll, 20));
     useEffect(() => {
         if (isLoading && page+1<=totalPages) {
+            console.log(page);
             setPage((prevPage) => prevPage + 1);
         }
     }, [isLoading]);
@@ -128,7 +126,7 @@ export default function Movies() {
                     </div>
                 </div>
                 <div className="img-gallery">
-                    {data.map((item:IMovie, i) => (
+                    {movies.map((item:IMovie, i) => (
                         <MovieCard
                             tops={item}
                             key={item.id+i}
